@@ -1,4 +1,4 @@
-# PythonGame_Recuse_the_Rad
+# PythonGame_Recuse_the_Red_Square
 This a python game I wrote in Winter 2019.
 
 
