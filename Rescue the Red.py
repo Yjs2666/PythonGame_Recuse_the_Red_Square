@@ -1,24 +1,16 @@
 # Project Name：Rescue the Red Square
-# programName.py
-# Jishuo Yang
-# M002 
-# Jyang98@syr.edu
-
-
 
 from graphics import *
 from random import randrange
 import time
 import math
 
-# (GW)  a GraphWin
 def setWin():  # this function is to make the graphics window.
     win = GraphWin("Rescue the Red Square",800,800) 
     win.setCoords(0,0,24,24) # this is the coordinate of the game
     win.setBackground("silver") # background color -- silver
     return win
 
-# Lab18 Bouncing Ball
 # This one is use to draw the 6X6 squares as the game board.
 def mainBackBoard(win):
     x = 6 # this is X-axis for the bottom left square 
@@ -47,10 +39,10 @@ def mainBackBoard(win):
 
 
 
-#(CLOD)  At least one class of your own design with objects and methods that are used.
+
 # this is the class for the Hero Block which is the main Block. It has some unique feature. 
 class Hero(): 
-#(LOOD)  A list of objects of a class of your own design. 
+
     # we use the leftLowerX and leftLowerY as the left lower point of the square
     # then the X+length and Y+Width are the top right Point. So we can draw the square
     def __init__(self,length,width,leftLowerX,leftLowerY,color,dir=0):
@@ -126,11 +118,10 @@ class Hero():
     def getLeftLowerY(self):
         return self.leftLowerY
 
-#(CLOD)  At least one class of your own design with objects and methods that are used.
 class Blocks():
     # This class is pretty much the same thing as the Hero Class.
     # The difference is that one is only work for that one square, This Class use to all the rest of them.
-#(LOOD)  A list of objects of a class of your own design. 
+
     def __init__(self,length,width,leftLowerX,leftLowerY,color,dir=0):
         self.color = color
         self.length = length
@@ -222,9 +213,6 @@ class Blocks():
     def getLeftLowerY(self):
         return self.leftLowerY
 
-
-
-# (FNC) functions of your own design not belonging to any class.
     # This one is giving the values of the Length, width,X ,and Y
 def drawBlocks(win):
     # the different names means the differnt blocks. 
@@ -458,8 +446,7 @@ def gamesteps(win):
             return clicks
             break
         
-        
-#(OTXT)           interactive output using Text
+
 # this is to draw the steps left to the window. 
 def draw_Steps(win):
     stepText = Text(Point(2,23),"Steps Left: ")
@@ -533,7 +520,7 @@ def checkWin(heroBlock,heroMoved):
     else:
         return False
     
-# (FNC) functions of your own design not belonging to any class.
+
 def occupation(blockNum,movementVerRecShort,movementVerRecLong1,movementVerRecLong2,movementHorRecShort1,movementHorRecShort2,movementHorRecLong1,movementHorRecLong2,movementHero): 
 # assuming that every square is a little spot, so we have 6 x 6 = 36 spots
 # is their is a square on the spot, invalid move.
@@ -737,7 +724,6 @@ def occupation(blockNum,movementVerRecShort,movementVerRecLong1,movementVerRecLo
             return False
 
 # this function use to draw the Lucky Draw. 
-# (FNC) functions of your own design not belonging to any class.
 
 # those are teh arrow that will show and indicating the prize that the player will get.
 def LuckDraw(win):
@@ -794,7 +780,7 @@ def LuckDraw(win):
         time.sleep(.1)
     # make no sence when stop at the bottom or the 2 lines of the circle.
     # so we only count from arrow 4 to 9
-#(RND)   some randomness using the random class.
+
     random = randrange(4,9)  # when the arrow stops at 4, the total clicks + 3
     if random == 4:
         theArrow4.draw(win)
@@ -888,7 +874,7 @@ def playerName(win):
     playerInfo = Text(Point(15.5,20.6),"Player:")
     playerInfo.setSize(20)
     playerInfo.draw(win).setOutline("darkslategray")
-#(IEB)   interactive input using Entry boxes
+
     entryBox = Entry(Point(15.5,19.4),10)
     entryBox.draw(win).setText("Your Name")
     return entryBox
@@ -910,7 +896,7 @@ def quitButton(win):
 def quitGame(win):
     win.close()
     
-#(CLOD)  At least one class of your own design with objects and methods that are used.
+
     # this class is drawing the instuctions and reset the insructions. 
 class Instruction():
     def __init__(self,text): # get text from main()
@@ -931,7 +917,6 @@ class Instruction():
 
 
 # this is to draw the deader Board and sort it by the steps left, then print to outfile also print to the window.
-#(CLOD)  At least one class of your own design with objects and methods that are used.
 class LeaderBoard:
     def __init__(self,name,step):
         self.name = name
@@ -945,7 +930,7 @@ class LeaderBoard:
         if part == 1:          
             text_N = Text(Point(2.5,11),self.name)
             text_S = Text(Point(3.5,11),str(self.step))
-#(OFL) a text output file            
+       
             outfile = open("saved_record.txt","w")
             print(self.name+"\t"+str(self.step),file=outfile)
             outfile.close
@@ -986,7 +971,7 @@ def modify_the_file(name,record,win):
     oldrecord = []
     newName = name
     newRecord = str(record) 
-#(IFL)   a text input file
+
     infile = open("saved_record.txt","r") #open file
     for line in infile: #read file
         info = make_the_record(line)     
@@ -1019,7 +1004,7 @@ def main():
     ins_message.drawInstruction(win)
     draw_Steps(win) # draw the steps left.
     
-# (IMS) mouse input making use of the location of the mouse click.   
+ 
     for possibleclick in range(999): #gives 999 chance to click what ever you want, but there is only one place you clicked and workd
         possibleclick = win.getMouse() 
         
